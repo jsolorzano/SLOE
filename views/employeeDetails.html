@@ -170,7 +170,7 @@
                         <a class="btn btn-xs btn-white"><i class="fa fa-phone"></i> Call </a>
                         <a class="btn btn-xs btn-white"><i class="fa fa-envelope"></i> Email</a>
                         <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
-                        <a class="btn btn-xs btn-white" title="Editar"><i class="fa fa-edit"></i> Edit</a>
+                        <a class="btn btn-xs btn-white" title="Editar" ng-click="editable()"><i class="fa fa-edit"></i> Edit</a>
                     </div>
                 </div>
 
@@ -179,7 +179,7 @@
         </div>
         
         <div class="col-lg-8">
-            <div class="ibox float-e-margins">
+            <div class="ibox float-e-margins" ng-class="{'ocultar' : ocultar}">
                 <div class="ibox-title">
                     <h5>Edit <small>Edit employee details</small></h5>
                 </div>
@@ -192,14 +192,14 @@
                                 <p>Edit employee details and look at changes in real time.</p>
                                 <div class="form-group">
                                     <label>Nombre</label> 
-                                    <input type="text" placeholder="Enter name" class="form-control" ng-model="empleado.nombre" required>
+                                    <input type="text" placeholder="Enter name" class="form-control" ng-model="empleado.nombre" required ng-disabled="ocultar">
                                     <div ng-show="!empleado.nombre && form_empleado.$submitted" class="alert alert-warning">
                                         Debes rellenar esta casilla
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Descripción</label>
-                                    <input type="text" placeholder="Description" class="form-control" ng-model="empleado.descripcion" required>
+                                    <input type="text" placeholder="Description" class="form-control" ng-model="empleado.descripcion" required ng-disabled="ocultar">
                                     <div ng-show="!empleado.descripcion && form_empleado.$submitted" class="alert alert-warning">
                                         Debes rellenar esta casilla
                                     </div>
@@ -216,7 +216,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new">Select file</span>
                                         <span class="fileinput-exists">Change</span>
-                                        <input type="file" ng-model="empleado.imagen"/>
+                                        <input type="file" ng-model="empleado.imagen" ng-disabled="ocultar"/>
                                     </span>
                                     <span class="fileinput-filename"></span>
                                     <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">×</a>
@@ -226,7 +226,7 @@
                         <div class="row">
                             <br>
                             <p class="text-center">
-                                <button class="btn btn-sm btn-primary" type="submit" ng-click="guardarInfo()"><strong>Save</strong></button>
+                                <button class="btn btn-sm btn-primary" type="submit" ng-click="guardarInfo()" ng-disabled="ocultar"><strong>Save</strong></button>
                             </p>
                         </div>
                     </form>
