@@ -6,6 +6,8 @@ miAppAngular.controller('detallesEmpleado', function($scope, $http, $routeParams
     
     $scope.nombrePagina2 = "Employee edit";
     
+    $scope.ocultar = true;
+    
     $http.get(configuracionGlobal.api_url + "empleados/details", {
         
         params: { empleadoID: $routeParams.employeeId }  // Enviamos el id que viene como parámetro en la url capturándolo con $routeParams
@@ -35,6 +37,14 @@ miAppAngular.controller('detallesEmpleado', function($scope, $http, $routeParams
             alert("Faltan casillas por rellenar");
         }*/
         
+    };
+    
+    $scope.editable = function(){
+        if($scope.ocultar == true){
+            $scope.ocultar = false;
+        }else{
+            $scope.ocultar = true;
+        }
     };
     
 });
